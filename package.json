@@ -1,9 +1,9 @@
 {
-  "name": "cordova-plugin-nativevars",
+  "name": "cordova-plugin-applinks",
   "version": "1.0.0",
-  "description": "Custom Cordova Native Variables",
+  "description": "Universal and Applinks native setup for iOS and Android",
   "cordova": {
-    "id": "cordova-plugin-nativevars",
+    "id": "cordova-plugin-applinks",
     "platforms": [
       "android",
       "ios"
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/kanodeveloper/cordova-plugin-nativevars.git"
+    "url": "https://github.com/kanodeveloper/cordova-plugin-applinks.git"
   },
   "keywords": [
   ],
   "author": "kanodev",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/kanodeveloper/cordova-plugin-nativevars/issues"
+    "url": "https://github.com/kanodeveloper/cordova-plugin-applinks/issues"
   },
-  "homepage": "https://github.com/kanodeveloper/cordova-plugin-nativevars"
+  "homepage": "https://github.com/kanodeveloper/cordova-plugin-applinks"
 }

@@ -1,38 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Copyright (c) 2017 Kano Applications Inc. All rights reserved.
-  Use of this source code is governed by a BSD-style license that can be
-  found in the LICENSE file.
--->
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-nativevars"
-        version="1.0.0">
-
-    <name>Custom Cordova Native Variables</name>
-    <keywords>cordova</keywords>
-    <repo>https://github.com/kanodeveloper/cordova-plugin-nativevars.git</repo>
-    <issue>https://github.com/kanodeveloper/cordova-plugin-nativevars/issues</issue>
-
-    <js-module src="www/nativevars.js" name="NativeVars">
-        <clobbers target="NativeVars" />
-    </js-module>
-
+        id="cordova-plugin-applinks" version="1.0.0">
+    <name>Applinks</name>
+    <description>Applinks</description>
+    <license></license>
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
-            <feature name="NativeVarsPlugin">
-                <param name="ios-package" value="NativeVarsPlugin"/>
+            <feature name="Applinks">
+                <param name="ios-package" value="Applinks"/>
+                <param name="onload" value="true" />
             </feature>
         </config-file>
-        <header-file src="src/ios/NativeVarsPlugin.h" />
-        <source-file src="src/ios/NativeVarsPlugin.m" />
+        <header-file src="src/ios/Applinks.h" />
+        <source-file src="src/ios/Applinks.m" />
+        <header-file src="src/ios/AppDelegate+Applinks.h" />
+        <source-file src="src/ios/AppDelegate+Applinks.m" />
     </platform>
-
     <platform name="android">
         <config-file target="config.xml" parent="/*">
-            <feature name="NativeVarsPlugin">
-                <param name="android-package" value="com.kanoapps.cordova.nativevars.NativeVarsPlugin"/>
+            <feature name="Applinks">
+                <param name="android-package" value="com.kanoapps.cordova.applinks.Applinks"/>
+                <param name="onload" value="true" />
             </feature>
         </config-file>
-        <source-file src="src/android/NativeVarsPlugin.java" target-dir="src/com/kanoapps/cordova/nativevars" />
+        <config-file target="AndroidManifest.xml" parent="./application/activity">
+            <intent-filter android:label="$LABEL" android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="http" android:host="$HOST"/>
+                <data android:scheme="https" android:host="$HOST"/>
+            </intent-filter>
+            <intent-filter android:label="$LABEL _">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="$SCHEME"/>
+            </intent-filter>
+        </config-file>
+        <source-file src="src/android/Applinks.java" target-dir="src/com/kanoapps/cordova/applinks" />
     </platform>
 </plugin>
