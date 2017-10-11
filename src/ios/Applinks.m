@@ -1,4 +1,4 @@
-#import "CustomStartupPlugin.h"
+#import "Applinks.h"
 
 @implementation Applinks
 
