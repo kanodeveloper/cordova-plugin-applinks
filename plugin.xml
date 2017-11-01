@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-applinks" version="1.0.1">
+        id="cordova-plugin-applinks" version="1.0.2">
     <name>Applinks</name>
     <description>Applinks</description>
     <license></license>
@@ -17,6 +17,14 @@
         <source-file src="src/ios/AppDelegate+Applinks.m" />
     </platform>
     <platform name="android">
+
+        <source-file src="src/android/applinks.xml" target-dir="res/values" />
+        <config-file target="res/values/applinks.xml" parent="/*">
+            <string name="applink_host">$HOST</string>
+            <string name="applink_scheme">$SCHEME</string>
+            <string name="applink_label">$LABEL</string>
+        </config-file>
+
         <config-file target="config.xml" parent="/*">
             <feature name="Applinks">
                 <param name="android-package" value="com.kanoapps.cordova.applinks.Applinks"/>
@@ -24,18 +32,18 @@
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="./application/activity">
-            <intent-filter android:label="$LABEL" android:autoVerify="true">
+            <intent-filter android:label="@string/applink_label" android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="http" android:host="$HOST"/>
-                <data android:scheme="https" android:host="$HOST"/>
+                <data android:scheme="http" android:host="@string/applink_host"/>
+                <data android:scheme="https" android:host="@string/applink_host"/>
             </intent-filter>
-            <intent-filter android:label="$LABEL _">
+            <intent-filter android:label="@string/applink_label _">
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="$SCHEME"/>
+                <data android:scheme="@string/applink_scheme"/>
             </intent-filter>
         </config-file>
         <source-file src="src/android/Applinks.java" target-dir="src/com/kanoapps/cordova/applinks" />
