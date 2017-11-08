@@ -39,7 +39,7 @@
                 <data android:scheme="http" android:host="@string/applink_host"/>
                 <data android:scheme="https" android:host="@string/applink_host"/>
             </intent-filter>
-            <intent-filter android:label="@string/applink_label _">
+            <intent-filter android:label="@string/applink_label">
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
