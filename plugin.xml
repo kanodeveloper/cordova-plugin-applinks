@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-applinks" version="1.0.2">
+        id="cordova-plugin-applinks" version="1.0.3">
     <name>Applinks</name>
     <description>Applinks</description>
     <license></license>

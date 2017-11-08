@@ -1,6 +1,6 @@
 {
   "name": "cordova-plugin-applinks",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Universal and Applinks native setup for iOS and Android",
   "cordova": {
     "id": "cordova-plugin-applinks",
