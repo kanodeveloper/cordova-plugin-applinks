@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-applinks" version="1.0.3">
+        id="cordova-plugin-applinks" version="1.0.4">
     <name>Applinks</name>
     <description>Applinks</description>
     <license></license>
+
+    <preference name="HOST" />
+    <preference name="SCHEME" />
+
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
             <feature name="Applinks">
@@ -15,6 +19,18 @@
         <source-file src="src/ios/Applinks.m" />
         <header-file src="src/ios/AppDelegate+Applinks.h" />
         <source-file src="src/ios/AppDelegate+Applinks.m" />
+
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+          <array>
+            <dict>
+              <key>CFBundleURLSchemes</key>
+              <array>
+                <string>$SCHEME</string>
+              </array>
+            </dict>
+          </array>
+        </config-file>
+
     </platform>
     <platform name="android">
 
@@ -22,7 +38,6 @@
         <config-file target="res/values/applinks.xml" parent="/*">
             <string name="applink_host">$HOST</string>
             <string name="applink_scheme">$SCHEME</string>
-            <string name="applink_label">$LABEL</string>
         </config-file>
 
         <config-file target="config.xml" parent="/*">
@@ -32,14 +47,14 @@
             </feature>
         </config-file>
         <config-file target="AndroidManifest.xml" parent="./application/activity">
-            <intent-filter android:label="@string/applink_label" android:autoVerify="true">
+            <intent-filter android:label="@string/app_name" android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
                 <data android:scheme="http" android:host="@string/applink_host"/>
                 <data android:scheme="https" android:host="@string/applink_host"/>
             </intent-filter>
-            <intent-filter android:label="@string/applink_label">
+            <intent-filter android:label="@string/app_name">
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
