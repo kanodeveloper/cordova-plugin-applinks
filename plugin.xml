@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        id="cordova-plugin-applinks" version="1.1.1">
+        id="cordova-plugin-applinks-ka" version="1.2.0">
     <name>Applinks</name>
     <description>Applinks</description>
     <license></license>
-
-    <preference name="HOST1" />
-    <preference name="HOST2" />
-    <preference name="SCHEME" />
 
     <platform name="ios">
         <config-file target="config.xml" parent="/*">
@@ -21,45 +17,5 @@
         <header-file src="src/ios/AppDelegate+Applinks.h" />
         <source-file src="src/ios/AppDelegate+Applinks.m" />
 
-        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
-          <array>
-            <dict>
-              <key>CFBundleURLSchemes</key>
-              <array>
-                <string>$SCHEME</string>
-              </array>
-            </dict>
-          </array>
-        </config-file>
-
-    </platform>
-    <platform name="android">
-
-        <source-file src="src/android/applinks.xml" target-dir="res/values" />
-        <config-file target="res/values/applinks.xml" parent="/*">
-            <string name="applink_host_1">$HOST1</string>
-            <string name="applink_host_2">$HOST2</string>
-            <string name="applink_scheme">$SCHEME</string>
-        </config-file>
-
-        <config-file target="config.xml" parent="/*">
-            <feature name="Applinks">
-                <param name="android-package" value="com.kanoapps.cordova.applinks.Applinks"/>
-                <param name="onload" value="true" />
-            </feature>
-        </config-file>
-        <config-file target="AndroidManifest.xml" parent="./application/activity">
-            <intent-filter android:label="@string/app_name" android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="http" android:host="@string/applink_host_1"/>
-                <data android:scheme="https" android:host="@string/applink_host_1"/>
-                <data android:scheme="http" android:host="@string/applink_host_2"/>
-                <data android:scheme="https" android:host="@string/applink_host_2"/>
-                <data android:scheme="@string/applink_scheme"/>
-            </intent-filter>
-        </config-file>
-        <source-file src="src/android/Applinks.java" target-dir="src/com/kanoapps/cordova/applinks" />
     </platform>
 </plugin>
